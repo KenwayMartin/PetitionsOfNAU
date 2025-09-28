@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Головна</title>
+  <title>Особистий кабінет</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="js/app.js" defer></script>
@@ -18,8 +18,15 @@
 </header>
 
 <main>
-  <h2>Остання петиція</h2>
-  <div id="latest-petition" style="border:1px solid #ccc; padding:10px; margin-top:10px;"></div>
+  <div id="user-info"></div>
+  <button id="logout-btn" style="display:none; margin-top:10px;">Вийти</button>
+
+  <h2>Створити петицію</h2>
+  <form id="create-petition-form">
+    <input type="text" id="petition-title" placeholder="Назва петиції" required style="width:100%; margin-bottom:5px;">
+    <textarea id="petition-text" placeholder="Текст петиції" required style="width:100%; margin-bottom:5px;"></textarea>
+    <button type="submit">Додати петицію</button>
+  </form>
 </main>
 
 <footer>

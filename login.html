@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Головна</title>
+  <title>Вхід</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="js/app.js" defer></script>
@@ -18,8 +18,13 @@
 </header>
 
 <main>
-  <h2>Остання петиція</h2>
-  <div id="latest-petition" style="border:1px solid #ccc; padding:10px; margin-top:10px;"></div>
+  <h2>Вхід через Google</h2>
+  <div id="g_id_onload"
+       data-client_id="725158591403-g9ejumv89bkqn7ftn9kmgssr02uqhmus.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse"
+       data-auto_prompt="false">
+  </div>
+  <div class="g_id_signin" id="signin-btn"></div>
 </main>
 
 <footer>
