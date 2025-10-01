@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Правила для коллекции "users"
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update, delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Правила для коллекции "petitions"
+    match /petitions/{petitionId} {
+      // Якщо ти хочеш дозволити всім читати петиції (навіть неаутентифікованим):
+      allow read;
+      // Інакше, якщо тільки аутентифікованим:
+      // allow read: if request.auth != null; // ЦЕ ВАЖЛИВО! Якщо тут було `allow read;` раніше, а зараз `allow read: if request.auth != null;` і додаток намагається читати без авторизації, це викличе 400 на Listen.
+
+      allow create: if request.auth != null; // Створювати може будь-який аутентифікований
+      allow update, delete: if request.auth != null && resource.data.authorUid == request.auth.uid; // Оновлювати/видаляти може тільки автор
+    }
+
+    // Правила для подколлекций (например, для комментариев в будущем)
+    match /petitions/{petitionId}/comments/{commentId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && resource.data.authorUid == request.auth.uid;
+    }
+  }
+}

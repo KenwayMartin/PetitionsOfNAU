@@ -2,35 +2,89 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Особистий кабінет</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Особистий кабінет - Голос студента</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <!-- Google Sign-In -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="js/app.js" defer></script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<header>
-  <a href="index.html"><h1>Голос студента</h1></a>
-  <nav>
-    <a href="index.html">Головна</a> |
-    <a href="petitions.html">Усі петиції</a> |
-    <a href="profile.html">Особистий кабінет</a>
-  </nav>
-</header>
+<div class="page-wrapper">
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-vote-yea logo-icon"></i>
+          <h1>Голос студента</h1>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+          <a href="petitions.html"><i class="fas fa-list"></i> Усі петиції</a>
+          <a href="profile.html"><i class="fas fa-user"></i> Особистий кабінет</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<main>
-  <div id="user-info"></div>
-  <button id="logout-btn" style="display:none; margin-top:10px;">Вийти</button>
+  <main>
+    <div class="container">
+      <!-- User Info Section -->
+      <div class="content-card user-profile" id="user-info">
+        <div class="loading">Завантаження інформації...</div>
+      </div>
 
-  <h2>Створити петицію</h2>
-  <form id="create-petition-form">
-    <input type="text" id="petition-title" placeholder="Назва петиції" required style="width:100%; margin-bottom:5px;">
-    <textarea id="petition-text" placeholder="Текст петиції" required style="width:100%; margin-bottom:5px;"></textarea>
-    <button type="submit">Додати петицію</button>
-  </form>
-</main>
+      <!-- Create Petition Form -->
+      <div class="content-card">
+        <h2 class="section-title">Створити петицію</h2>
+        <form id="create-petition-form">
+          <div class="form-group">
+            <label for="petition-title" class="form-label">
+              <i class="fas fa-heading"></i> Назва петиції
+            </label>
+            <input type="text" id="petition-title" class="form-control" placeholder="Введіть назву петиції..." required>
+          </div>
+          <div class="form-group">
+            <label for="petition-text" class="form-label">
+              <i class="fas fa-file-text"></i> Текст петиції
+            </label>
+            <textarea id="petition-text" class="form-control" placeholder="Опишіть вашу петицію детально..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-plus-circle"></i> Створити петицію
+          </button>
+        </form>
+      </div>
 
-<footer>
-  <p>&copy; 2025 Голос студента. Усі права захищені.</p>
-</footer>
+      <!-- User's Petitions -->
+      <div class="content-card">
+        <h2 class="section-title">Мої петиції</h2>
+        <div id="my-petitions" class="loading">
+          Завантаження ваших петицій...
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <div class="content-card text-center" id="logout-section" style="display: none;">
+        <button id="logout-btn" class="btn btn-danger">
+          <i class="fas fa-sign-out-alt"></i> Вийти з акаунту
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Голос студента. Усі права захищені.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>

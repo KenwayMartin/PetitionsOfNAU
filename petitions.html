@@ -2,28 +2,54 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Усі петиції</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Усі петиції - Голос студента</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <!-- Google Sign-In -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="js/app.js" defer></script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<header>
-  <a href="index.html"><h1>Голос студента</h1></a>
-  <nav>
-    <a href="index.html">Головна</a> |
-    <a href="petitions.html">Усі петиції</a> |
-    <a href="profile.html">Особистий кабінет</a>
-  </nav>
-</header>
+<div class="page-wrapper">
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-vote-yea logo-icon"></i>
+          <h1>Голос студента</h1>
+        </div>
+        <nav>
+          <a href="index.html"><i class="fas fa-home"></i> Головна</a>
+          <a href="petitions.html"><i class="fas fa-list"></i> Усі петиції</a>
+          <a href="profile.html"><i class="fas fa-user"></i> Особистий кабінет</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<main>
-  <h2>Усі петиції</h2>
-  <div id="all-petitions" style="margin-top:10px;"></div>
-</main>
+  <main>
+    <div class="container">
+      <div class="content-card">
+        <h2 class="section-title">Усі петиції</h2>
+        <div id="all-petitions" class="loading">
+          Завантаження петицій...
+        </div>
+      </div>
+    </div>
+  </main>
 
-<footer>
-  <p>&copy; 2025 Голос студента. Усі права захищені.</p>
-</footer>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Голос студента. Усі права захищені.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
